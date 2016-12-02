@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "web3": "",
-    "ethereumjs-tx":"",
+    "ethereumjs-tx":""
    
   },
   "main": "start.js",
