@@ -6,7 +6,6 @@
   "dependencies": {
     "web3": "",
     "ethereumjs-tx":""
-   
   },
   "main": "start.js",
   "scripts": {
