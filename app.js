@@ -5,6 +5,9 @@ const http         = require('http'),
       path         = require('path'),
       contentTypes = require('./utils/content-types'),
       sysInfo      = require('./utils/sys-info'),
+      Tx = require('ethereumjs-tx'),
+      Web3 = require('web3'),
+
       env          = process.env;
 
 let server = http.createServer(function (req, res) {
@@ -62,13 +65,13 @@ console.log(query)
             var nonce= parseInt(query.nonce);
            var toAddr = query.toAddr;
             
-            var Tx = require('ethereumjs-tx');
+            
 
             var privateKey = new Buffer(privKey, 'hex')
 
  // var Tx = require('ethereumjs-tx')
 
- var  Web3 = require('web3');
+
 var web3 = new Web3();
              var amount = web3.toHex(query.amount);
            // console.log(privateKey)
