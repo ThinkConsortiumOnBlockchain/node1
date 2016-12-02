@@ -1,4 +1,4 @@
-"use strict";
+//strict"use strict";
 
 const http         = require('http'),
       fs           = require('fs'),
