@@ -6,7 +6,8 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "ethereumjs-tx": "latest",
-    "web3": "latest"
+    "web3": "latest",
+    "solc": "latest"
   },
   "main": "start.js",
   "scripts": {
