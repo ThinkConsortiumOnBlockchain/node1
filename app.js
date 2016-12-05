@@ -75,8 +75,8 @@ console.log(query)
 
 var web3 = new Web3();
 var amount1 = parseInt(query.amount);
-var amount = decimalToHexString(amount1);
-             //amount = web3.toHex(query.amount);
+//var amount = decimalToHexString(amount1);
+           var  amount = web3.toHex(amount1);
            // console.log(privateKey)
           // privateKey = 'e57042a93a121cfccb15a7d642b7a17041e2df3652d7e6e8527a5c9a9f103f7a';
 /*
