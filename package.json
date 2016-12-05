@@ -1,11 +1,12 @@
-  {
+{
   "name": "openshift-cartridge-nodejs-template",
   "version": "1.0.1",
   "description": "Custom Node.js cartridge for OpenShift - sample application",
   "private": true,
   "dependencies": {
-    "web3": "latest",
-    "ethereumjs-tx":"latest"
+    "body-parser": "^1.15.2",
+    "ethereumjs-tx": "latest",
+    "web3": "latest"
   },
   "main": "start.js",
   "scripts": {

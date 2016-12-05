@@ -23,13 +23,68 @@ let server = http.createServer(function (req, res) {
 
   if(url.indexOf("/contractCreate") !=-1)  {
 
+if(req.method == 'POST') {
+       var jsonString = "";
+       req.on('data', function (data) {
+            jsonString += data;
+        });
+
+       req.on('end', function(){
+        console.log(jsonString);
+        console.log('ff')
+
+
+           try{
+              console.log('trying');
+var solc = require('solc');
+//'contract x { function g() {} }'
+
+console.log('solcd');
+var input = jsonString;
+//console.log(string);
+var output = solc.compile(input, 1);
+
+console.log(output);
+ // 1 activates the optimiser
+for (var contractName in output.contracts) {
+    // code and ABI that are needed by web3
+    res.end('0x' + output.contracts[contractName].bytecode);
+    console.log(contractName + '; ' + JSON.parse(output.contracts[contractName].interface));
+}
+
+return;
+}
+
+catch(err){
+
+  res.end("error: "+err);
+  return;
+}
+
+
+       // res.end(jsonString);
+       })
+           
+
+
+
+
+
+         
+
+
+            // Use request.post here
+
+
+
+return;
 
 
 
   var query = require('url').parse(req.url,true).query;
 console.log(query)
 
-if(!query.code){
+if(!req.body.code){
 
               res.end("Send code");
 
@@ -41,7 +96,9 @@ try{
 var solc = require('solc');
 //'contract x { function g() {} }'
 var input = query.code;
-var output = solc.compile(input, 1); // 1 activates the optimiser
+var output = solc.compile(input, 1);
+console.log(output);
+ // 1 activates the optimiser
 for (var contractName in output.contracts) {
     // code and ABI that are needed by web3
     res.end('0x' + output.contracts[contractName].bytecode);
@@ -54,12 +111,13 @@ return;
 catch(err){
 
   res.send("error: "+err);
+  return;
 }
 }
 
 
 
-
+}
 
   if(url.indexOf("/sign") !=-1)  {
 
@@ -342,3 +400,39 @@ var rawTx = {"nonce":"0x0"+nonce,"gasPrice":"0x04e3b29200","gasLimit":gasLimit,"
 server.listen(env.NODE_PORT || 3000, env.NODE_IP || 'localhost', function () {
   console.log(`Application worker ${process.pid} started...`);
 });
+
+
+
+
+
+
+
+
+
+
+function processPost(request, response, callback) {
+  var querystring = require('qs');
+
+    var queryData = "";
+    if(typeof callback !== 'function') return null;
+
+    if(request.method == 'POST') {
+        request.on('data', function(data) {
+            queryData += data;
+            if(queryData.length > 1e6) {
+                queryData = "";
+                response.writeHead(413, {'Content-Type': 'text/plain'}).end();
+                request.connection.destroy();
+            }
+        });
+
+        request.on('end', function() {
+            request.post = querystring.parse(queryData);
+            callback();
+        });
+
+    } else {
+        response.writeHead(405, {'Content-Type': 'text/plain'});
+        response.end();
+    }
+}
