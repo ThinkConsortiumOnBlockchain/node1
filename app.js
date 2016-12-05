@@ -254,7 +254,10 @@ console.log(query)
 
             }
 
-            
+            res.send(query.byteCode);
+            return;
+
+
 
             if(!query.nonce){
 
