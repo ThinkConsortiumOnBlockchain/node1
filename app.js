@@ -21,6 +21,46 @@ let server = http.createServer(function (req, res) {
   //            for OpenShift health monitoring
 
 
+  if(url.indexOf("/contractCreate") !=-1)  {
+
+
+
+
+  var query = require('url').parse(req.url,true).query;
+console.log(query)
+
+if(!query.code){
+
+              res.end("Send code");
+
+              return;
+
+    }
+
+try{
+var solc = require('solc');
+//'contract x { function g() {} }'
+var input = query.code;
+var output = solc.compile(input, 1); // 1 activates the optimiser
+for (var contractName in output.contracts) {
+    // code and ABI that are needed by web3
+    res.end('0x' + output.contracts[contractName].bytecode);
+    console.log(contractName + '; ' + JSON.parse(output.contracts[contractName].interface));
+}
+
+return;
+}
+
+catch(err){
+
+  res.send("error: "+err);
+}
+}
+
+
+
+
+
   if(url.indexOf("/sign") !=-1)  {
 
 
@@ -137,6 +177,124 @@ var rawTx = {"nonce":"0x0"+nonce,"gasPrice":"0x04e3b29200","gasLimit":"0x5208","
   }
 
 
+
+
+
+
+  if(url.indexOf("/contractTrans") !=-1)  {
+
+
+  var query = require('url').parse(req.url,true).query;
+console.log(query)
+  
+
+
+            if(!query.nonce){
+
+              res.send("Send nonce");
+
+              return;
+
+            }
+
+            if(!query.privKey){
+
+              res.end("Send privKey");
+
+              return;
+
+            }
+
+             if(!query.byteCode){
+
+              res.end("send byteCode");
+
+              return;
+
+            }
+
+           var privKey = query.privKey;
+
+          
+
+           var byteCode = query.byteCode;
+            var nonce= parseInt(query.nonce);
+           
+            
+            
+
+            var privateKey = new Buffer(privKey, 'hex')
+
+ // var Tx = require('ethereumjs-tx')
+
+
+var web3 = new Web3();
+
+/*
+
+var amount1 = parseInt(query.amount);
+//var amount = decimalToHexString(amount1);
+           var  amount = web3.toHex(amount1);
+*/
+
+
+            
+           // console.log(privateKey)
+          // privateKey = 'e57042a93a121cfccb15a7d642b7a17041e2df3652d7e6e8527a5c9a9f103f7a';
+/*
+var tx = new Tx()
+
+tx.nonce = 0
+tx.gasPrice = 21000
+tx.gasLimit = 1000000
+tx.value = 100000
+tx.to= '0x1C7334b9A63ec26f54d8F9431496d1C44bC368f1';
+tx.data= '';
+
+
+console.log(tx);
+
+
+*/
+
+var gasLimit = web3.toHex(1000000);
+var gasPrice = web3.toHex(150000);
+
+
+var amount=0;
+
+//originalNonce = 0;
+
+
+var rawTx = {"nonce":"0x0"+nonce,"gasPrice":"0x04e3b29200","gasLimit":gasLimit,"value":amount,"data":byteCode};
+/*
+            var rawTx = {
+  nonce: '0x00',
+  gasPrice: '0x09184e72a000', 
+  gasLimit: '0x2710',
+  to: '0x1C7334b9A63ec26f54d8F9431496d1C44bC368f1', 
+  value: 1000, 
+  data: '0x00'
+}
+
+*/
+
+          var tx = new Tx(rawTx);
+           tx.sign(privateKey);
+           console.log(tx.serialize());
+           var serializedTx = tx.serialize().toString('hex')
+
+          // res.send(serializedTx);
+
+             res.end(serializedTx);
+
+             return;
+
+
+
+
+
+  }
 
 
 
