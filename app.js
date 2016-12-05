@@ -249,7 +249,7 @@ console.log(query)
 
             if(!query.nonce){
 
-              res.send("Send nonce");
+              res.end("Send nonce");
 
               return;
 
