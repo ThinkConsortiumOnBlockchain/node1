@@ -246,6 +246,15 @@ var rawTx = {"nonce":"0x0"+nonce,"gasPrice":"0x04e3b29200","gasLimit":"0x5208","
 console.log(query)
   
 
+ if(!query.byteCode){
+
+              res.end("send byteCode");
+
+              return;
+
+            }
+
+            
 
             if(!query.nonce){
 
@@ -263,13 +272,7 @@ console.log(query)
 
             }
 
-             if(!query.byteCode){
-
-              res.end("send byteCode");
-
-              return;
-
-            }
+            
 
            var privKey = query.privKey;
 
