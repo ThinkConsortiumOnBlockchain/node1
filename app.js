@@ -74,9 +74,16 @@ console.log(query)
 
 
 var web3 = new Web3();
+
+/*
+
 var amount1 = parseInt(query.amount);
 //var amount = decimalToHexString(amount1);
            var  amount = web3.toHex(amount1);
+*/
+
+
+             var amount = web3.toHex(query.amount);
            // console.log(privateKey)
           // privateKey = 'e57042a93a121cfccb15a7d642b7a17041e2df3652d7e6e8527a5c9a9f103f7a';
 /*
@@ -177,16 +184,3 @@ var rawTx = {"nonce":"0x0"+nonce,"gasPrice":"0x04e3b29200","gasLimit":"0x5208","
 server.listen(env.NODE_PORT || 3000, env.NODE_IP || 'localhost', function () {
   console.log(`Application worker ${process.pid} started...`);
 });
-
-
-
-
-function decimalToHexString(number)
-{
-    if (number < 0)
-    {
-        number = 0xFFFFFFFF + number + 1;
-    }
-
-    return number.toString(16).toUpperCase();
-}
