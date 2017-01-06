@@ -170,8 +170,16 @@ console.log(query)
 
  // var Tx = require('ethereumjs-tx')
 
+  Web3 = require('web3');
+web3 = new Web3();
+var amo = parseInt(req.query.amount);
+var amo1 = "0x"+ decimalToHexString(amo);
+  //var amount = web3.toHex(req.query.amount);
 
-var web3 = new Web3();
+  var amount = amo1;
+
+  
+//var web3 = new Web3();
 
 /*
 
@@ -181,7 +189,7 @@ var amount1 = parseInt(query.amount);
 */
 
 
-             var amount = web3.toHex(query.amount);
+             //var amount = web3.toHex(query.amount);
            // console.log(privateKey)
           // privateKey = 'e57042a93a121cfccb15a7d642b7a17041e2df3652d7e6e8527a5c9a9f103f7a';
 /*
