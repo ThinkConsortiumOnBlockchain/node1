@@ -178,7 +178,7 @@ var amo1 = "0x"+ decimalToHexString(amo);
 
   var amount = amo1;
 
-  
+
 //var web3 = new Web3();
 
 /*
@@ -421,6 +421,18 @@ server.listen(env.NODE_PORT || 3000, env.NODE_IP || 'localhost', function () {
 
 
 
+
+
+
+function decimalToHexString(number)
+{
+    if (number < 0)
+    {
+        number = 0xFFFFFFFF + number + 1;
+    }
+
+    return number.toString(16).toUpperCase();
+}
 
 
 
