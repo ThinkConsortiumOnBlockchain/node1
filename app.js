@@ -174,6 +174,7 @@ console.log(query)
   var Web3 = require('web3');
 var web3 = new Web3();
 var amo = parseInt(query.amount);
+
 var amo1 = "0x"+ decimalToHexString(amo);
   //var amount = web3.toHex(query.nonce);
 
@@ -233,7 +234,7 @@ var rawTx = {"nonce":"0x"+decimalToHexString(nonce),"gasPrice":"0x098bca5a00","g
 
           // res.send(serializedTx);
 
-             res.end(serializedTx);
+             res.end(serializedTx + "<br><br>amount = "+ amount+ "<br><br>query amount="+query.amount);
 
              return;
 
