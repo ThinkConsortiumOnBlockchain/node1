@@ -213,7 +213,7 @@ console.log(tx);
 //originalNonce = 0;
 
 
-var rawTx = {"nonce":"0x"+nonce,"gasPrice":"0x09184e72a000","gasLimit":"0x5208","to":"0x"+toAddr,"value":amount,"data":""};
+var rawTx = {"nonce":"0x"+nonce,"gasPrice":"0x04e3b29200","gasLimit":"0x5208","to":"0x"+toAddr,"value":amount,"data":""};
 /*
             var rawTx = {
   nonce: '0x00',
