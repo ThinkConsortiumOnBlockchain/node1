@@ -170,13 +170,13 @@ console.log(query)
 
  // var Tx = require('ethereumjs-tx')
 
-  Web3 = require('web3');
-web3 = new Web3();
-//var amo = parseInt(req.query.amount);
-//var amo1 = "0x"+ decimalToHexString(req.query.amount);
-  var amount = web3.toHex(req.query.amount);
+  var Web3 = require('web3');
+var web3 = new Web3();
+var amo = parseInt(query.amount);
+var amo1 = "0x"+ decimalToHexString(amo);
+  //var amount = web3.toHex(query.nonce);
 
-  //var amount = amo1;
+  var amount = amo1;
 
 
 //var web3 = new Web3();
