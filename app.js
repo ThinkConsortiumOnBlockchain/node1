@@ -172,8 +172,8 @@ console.log(query)
 
   Web3 = require('web3');
 web3 = new Web3();
-var amo = parseInt(req.query.amount);
-var amo1 = "0x"+ decimalToHexString(amo);
+//var amo = parseInt(req.query.amount);
+//var amo1 = "0x"+ decimalToHexString(req.query.amount);
   var amount = web3.toHex(req.query.amount);
 
   //var amount = amo1;
