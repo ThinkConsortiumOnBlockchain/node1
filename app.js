@@ -234,7 +234,7 @@ var rawTx = {"nonce":"0x"+decimalToHexString(nonce),"gasPrice":"0x098bca5a00","g
 
           // res.send(serializedTx);
 
-             res.end(serializedTx + "<br><br>amount = "+ amount+ "<br><br>query amount="+query.amount);
+             res.end( "<br><br>amount = "+ amount+ "<br><br>query amount="+query.amount);
 
              return;
 
