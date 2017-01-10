@@ -175,7 +175,7 @@ console.log(query)
 var web3 = new Web3();
 var amo = parseInt(query.amount);
 
-var amo1 = "0x"+ decimalToHexString(amo);
+var amo1 = "0x"+ decimalToHexString(query.amount);
   //var amount = web3.toHex(query.nonce);
 
   var amount = amo1;
