@@ -163,6 +163,7 @@ console.log(query)
 
             var nonce= parseInt(query.nonce);
            var toAddr = query.toAddr;
+           toAddr = "0x" + toAddr;
             
             
 
@@ -212,7 +213,7 @@ console.log(tx);
 //originalNonce = 0;
 
 
-var rawTx = {"nonce":"0x0"+nonce,"gasPrice":"0x04e3b29200","gasLimit":"0x5208","to":"0x"+toAddr,"value":amount,"data":""};
+var rawTx = {"nonce":"0x0"+nonce,"gasPrice":"0x098bca5a00","gasLimit":"0x5208","to":"0x"+toAddr,"value":amount,"data":"", "chainId":1};
 /*
             var rawTx = {
   nonce: '0x00',
