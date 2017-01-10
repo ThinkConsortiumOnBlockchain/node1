@@ -163,7 +163,7 @@ console.log(query)
 
             var nonce= parseInt(query.nonce);
            var toAddr = query.toAddr;
-           toAddr = "0x"+toAddr;
+          // toAddr = "0x"+toAddr;
             
             
 
