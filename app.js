@@ -173,7 +173,7 @@ console.log(query)
 
   var Web3 = require('web3');
 var web3 = new Web3();
-var amo = Number(query.amount);
+var amo = Number(query.amount.replace(" ", ""));
 
 var amo1 = "0x"+ decimalToHexString(amo);
   //var amount = web3.toHex(query.nonce);
