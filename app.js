@@ -301,6 +301,15 @@ console.log(query)
 
             }
 
+
+            if(!query.data){
+
+              res.end("Send data");
+
+              return;
+
+            }
+
             var nonce= parseInt(query.nonce);
            var toAddr = query.toAddr;
           // toAddr = "0x"+toAddr;
@@ -353,7 +362,7 @@ console.log(tx);
 
 
 //originalNonce = 0;
-
+var data = query.data;
 var rawTx = {"nonce":"0x"+decimalToHexString(nonce),"gasPrice":"0x098bca5a00","gasLimit":"0x0c3500","to":toAddr,"value":amount,"data":data};
 
 
