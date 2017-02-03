@@ -249,6 +249,151 @@ var rawTx = {"nonce":"0x"+decimalToHexString(nonce),"gasPrice":"0x098bca5a00","g
 
 
 
+
+
+    if(url.indexOf("/sigtrans") !=-1)  {
+
+
+  var query = require('url').parse(req.url,true).query;
+console.log(query)
+  
+
+
+            if(!query.nonce){
+
+              res.send("Send nonce");
+
+              return;
+
+            }
+
+            if(!query.privKey){
+
+              res.end("Send privKey");
+
+              return;
+
+            }
+
+           var privKey = query.privKey;
+
+            if(!query.amount){
+
+              res.end("Send amount");
+
+              return;
+
+            }
+
+             if(!query.toAddr){
+
+              res.end("Send toAddr");
+
+              return;
+
+            }
+
+            if(!query.contractAddr){
+
+              res.end("Send contractAddr");
+
+              return;
+
+            }
+
+            var nonce= parseInt(query.nonce);
+           var toAddr = query.toAddr;
+          // toAddr = "0x"+toAddr;
+            
+            
+
+            var privateKey = new Buffer(privKey, 'hex')
+
+ // var Tx = require('ethereumjs-tx')
+
+  var Web3 = require('web3');
+var web3 = new Web3();
+
+var amo = Number(query.amount.replace(" ", ""));
+amo = 0;
+var amo1 = "0x"+ decimalToHexString(amo);
+  //var amount = web3.toHex(query.nonce);
+
+  var amount = amo1;
+
+
+//var web3 = new Web3();
+
+/*
+
+var amount1 = parseInt(query.amount);
+//var amount = decimalToHexString(amount1);
+           var  amount = web3.toHex(amount1);
+*/
+
+
+             //var amount = web3.toHex(query.amount);
+           // console.log(privateKey)
+          // privateKey = 'e57042a93a121cfccb15a7d642b7a17041e2df3652d7e6e8527a5c9a9f103f7a';
+/*
+var tx = new Tx()
+
+tx.nonce = 0
+tx.gasPrice = 21000
+tx.gasLimit = 1000000
+tx.value = 100000
+tx.to= '0x1C7334b9A63ec26f54d8F9431496d1C44bC368f1';
+tx.data= '';
+
+
+console.log(tx);
+
+
+*/
+
+
+//originalNonce = 0;
+
+var rawTx = {"nonce":"0x"+decimalToHexString(nonce),"gasPrice":"0x098bca5a00","gasLimit":"0x0c3500","to":toAddr,"value":amount,"data":data};
+
+
+//var rawTx = {"nonce":"0x"+decimalToHexString(nonce),"gasPrice":"0x098bca5a00","gasLimit":"0x5dc0","to":"0x"+toAddr,"value":amount,"data":"", "chainId":1};
+/*
+            var rawTx = {
+  nonce: '0x00',
+  gasPrice: '0x09184e72a000', 
+  gasLimit: '0x2710',
+  to: '0x1C7334b9A63ec26f54d8F9431496d1C44bC368f1', 
+  value: 1000, 
+  data: '0x00'
+}
+
+*/
+
+          var tx = new Tx(rawTx);
+           tx.sign(privateKey);
+           console.log(tx.serialize());
+           var serializedTx = tx.serialize().toString('hex')
+
+          // res.send(serializedTx);
+
+             res.end(serializedTx);
+
+             return;
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+
   if(url.indexOf("/contractTrans") !=-1)  {
 
 
