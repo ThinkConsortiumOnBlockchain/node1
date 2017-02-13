@@ -363,7 +363,7 @@ console.log(tx);
 
 //originalNonce = 0;
 var data = query.data;
-var rawTx = {"nonce":"0x"+decimalToHexString(nonce),"gasPrice":"0x098bca5a00","gasLimit":"0x0c3500","to":toAddr,"value":amount,"data":data};
+var rawTx = {"nonce":"0x"+decimalToHexString(nonce),"gasPrice":"0x98bca5a00","gasLimit":"0xc3500","to":toAddr,"value":amount,"data":data};
 
 
 //var rawTx = {"nonce":"0x"+decimalToHexString(nonce),"gasPrice":"0x098bca5a00","gasLimit":"0x5dc0","to":"0x"+toAddr,"value":amount,"data":"", "chainId":1};
