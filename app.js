@@ -363,6 +363,7 @@ console.log(tx);
 
 //originalNonce = 0;
 var data = query.data;
+console.log(data);
 var rawTx = {"nonce":"0x"+decimalToHexString(nonce),"gasPrice":"0x098bca5a00","gasLimit":"0x0c3500","to":toAddr,"value":amount,"data":data};
 
 
